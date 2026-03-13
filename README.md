@@ -240,7 +240,7 @@
 ## 🚀 Як запустити
 
 ```bash
-git clone https://github.com/makarenko-tymur/praktychna-robota-2.git
+git clone https://github.com/g4rnet/College_Web-Design_Pr-2
 cd praktychna-robota-2
 ```
 
