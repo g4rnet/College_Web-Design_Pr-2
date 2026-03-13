@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Практична робота №2 — HTML Таблиці</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e16;
+      --surface: #16161f;
+      --card: #1d1d2b;
+      --border: rgba(255,255,255,0.07);
+      --accent1: #c084fc;
+      --accent2: #38bdf8;
+      --accent3: #f472b6;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      text-align: center;
+      padding: 72px 24px 56px;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 50% -10%, rgba(192,132,252,0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(56,189,248,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 30% at 80% 70%, rgba(244,114,182,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent1);
+      border: 1px solid rgba(192,132,252,0.4);
+      border-radius: 999px;
+      padding: 5px 18px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(4px);
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1.15;
+      background: linear-gradient(135deg, #fff 0%, var(--accent1) 50%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 480px;
+      margin: 0 auto 8px;
+      line-height: 1.6;
+    }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 26px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--card-accent, linear-gradient(90deg, var(--accent1), var(--accent2)));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      border-color: rgba(255,255,255,0.14);
+    }
+    .card:hover::before { opacity: 1; }
+
+    .card-num {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 22px;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
+      background: rgba(255,255,255,0.04);
+    }
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent2);
+      text-decoration: none;
+      padding: 8px 16px;
+      border: 1px solid rgba(56,189,248,0.3);
+      border-radius: 8px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .card-link:hover {
+      background: rgba(56,189,248,0.1);
+      border-color: rgba(56,189,248,0.6);
+    }
+    .arrow { transition: transform 0.2s; }
+    .card-link:hover .arrow { transform: translateX(3px); }
+
+    .c1 { --card-accent: linear-gradient(90deg, #c084fc, #818cf8); }
+    .c2 { --card-accent: linear-gradient(90deg, #38bdf8, #34d399); }
+    .c3 { --card-accent: linear-gradient(90deg, #f472b6, #fb923c); }
+    .c4 { --card-accent: linear-gradient(90deg, #fbbf24, #f87171); }
+    .c5 { --card-accent: linear-gradient(90deg, #4ade80, #22d3ee); }
+    .c6 { --card-accent: linear-gradient(90deg, #818cf8, #c084fc); }
+    .c7 { --card-accent: linear-gradient(90deg, #fb923c, #f472b6); }
+    .c8 { --card-accent: linear-gradient(90deg, #22d3ee, #4ade80); }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; right: -40px;
+      width: 120px; height: 120px;
+      background: var(--card-accent, linear-gradient(90deg, var(--accent1), var(--accent2)));
+      filter: blur(60px);
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .card:hover::after { opacity: 0.12; }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform: translateY(24px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    .card { animation: fadeUp 0.5s ease both; }
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.10s; }
+    .card:nth-child(3) { animation-delay: 0.15s; }
+    .card:nth-child(4) { animation-delay: 0.20s; }
+    .card:nth-child(5) { animation-delay: 0.25s; }
+    .card:nth-child(6) { animation-delay: 0.30s; }
+    .card:nth-child(7) { animation-delay: 0.35s; }
+    .card:nth-child(8) { animation-delay: 0.40s; }
+    header { animation: fadeUp 0.5s ease both; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">HTML · CSS · Таблиці</div>
+    <h1>Практична робота №2</h1>
+    <p class="subtitle">Створення таблиць на Web-сторінках засобами HTML та CSS</p>
+  </header>
+
+  <div class="grid">
+
+    <a class="card c1" href="./pages/ex1.html">
+      <div class="card-num">Завдання 01</div>
+      <span class="card-icon">📋</span>
+      <h2>Проста таблиця</h2>
+      <p>HTML-документ із таблицею простої структури. Теги <code>&lt;table&gt;</code>, <code>&lt;caption&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code>, атрибути <code>border</code>, <code>cellpadding</code>, <code>cellspacing</code>. Футер: Makarenko.</p>
+      <div class="card-tags">
+        <span class="tag">TABLE</span>
+        <span class="tag">BORDER</span>
+        <span class="tag">CAPTION</span>
+      </div>
+      <span class="card-link">Відкрити <span class="arrow">→</span></span>
+    </a>
+
+    <a class="card c2" href="./pages/ex2.html">
+      <div class="card-num">Завдання 02</div>
+      <span class="card-icon">🔀</span>
+      <h2>Складна таблиця</h2>
+      <p>Таблиця зі складною структурою: об'єднання комірок атрибутами <code>ROWSPAN</code> та <code>COLSPAN</code>. Фон сторінки та колір тексту через <code>bgcolor</code> і <code>text</code>.</p>
+      <div class="card-tags">
+        <span class="tag">ROWSPAN</span>
+        <span class="tag">COLSPAN</span>
+        <span class="tag">BGCOLOR</span>
+      </div>
+      <span class="card-link">Відкрити <span class="arrow">→</span></span>
+    </a>
+
+    <a class="card c3" href="./pages/ex3.html">
+      <div class="card-num">Завдання 03</div>
+      <span class="card-icon">🧾</span>
+      <h2>Накладна</h2>
+      <p>HTML-документ «Накладна» з таблицею: найменування, ціна, кількість, разом. Заголовок червоним кольором, рядок підсумку з <code>colspan</code>.</p>
+      <div class="card-tags">
+        <span class="tag">COLSPAN</span>
+        <span class="tag">COLOR</span>
+        <span class="tag">BORDER</span>
+      </div>
+      <span class="card-link">Відкрити <span class="arrow">→</span></span>
+    </a>
+
+    <a class="card c4" href="./pages/ex4.html">
+      <div class="card-num">Завдання 04</div>
+      <span class="card-icon">🎨</span>
+      <h2>Накладна з фоном</h2>
+      <p>Та сама накладна, але зі зміненим виглядом сторінки: жовтий фон через <code>bgcolor="yellow"</code>, зелена рамка <code>body</code> та <code>header</code>.</p>
+      <div class="card-tags">
+        <span class="tag">BGCOLOR</span>
+        <span class="tag">BACKGROUND</span>
+        <span class="tag">FONT COLOR</span>
+      </div>
+      <span class="card-link">Відкрити <span class="arrow">→</span></span>
+    </a>
+
+    <a class="card c5" href="./pages/ex5.html">
+      <div class="card-num">Завдання 05</div>
+      <span class="card-icon">🎨</span>
+      <h2>Таблиця з colgroup</h2>
+      <p>Задання кольору стовпців таблиці за допомогою тегів <code>&lt;colgroup&gt;</code> та <code>&lt;col&gt;</code> з атрибутом <code>style="background"</code>.</p>
+      <div class="card-tags">
+        <span class="tag">COLGROUP</span>
+        <span class="tag">COL</span>
+        <span class="tag">BACKGROUND</span>
+      </div>
+      <span class="card-link">Відкрити <span class="arrow">→</span></span>
+    </a>
+
+    <a class="card c6" href="./pages/ex6.html">
+      <div class="card-num">Завдання 06</div>
+      <span class="card-icon">📊</span>
+      <h2>thead / tbody / tfoot</h2>
+      <p>Накладна на товари з використанням секцій <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>. Рядок «Разом» у нижньому колонтитулі таблиці.</p>
+      <div class="card-tags">
+        <span class="tag">THEAD</span>
+        <span class="tag">TBODY</span>
+        <span class="tag">TFOOT</span>
+      </div>
+      <span class="card-link">Відкрити <span class="arrow">→</span></span>
+    </a>
+
+    <a class="card c7" href="./pages/ex7.html">
+      <div class="card-num">Завдання 07</div>
+      <span class="card-icon">🍽️</span>
+      <h2>Меню ресторану</h2>
+      <p>Самостійно зверстана таблиця у вигляді меню ресторану: секції «Гарніри» та «Десерти» з назвою, виходом та ціною страви.</p>
+      <div class="card-tags">
+        <span class="tag">COLSPAN</span>
+        <span class="tag">САМОСТІЙНО</span>
+        <span class="tag">СТИЛЬ</span>
+      </div>
+      <span class="card-link">Відкрити <span class="arrow">→</span></span>
+    </a>
+
+    <a class="card c8" href="./pages/ex8.html">
+      <div class="card-num">Завдання 08</div>
+      <span class="card-icon">🌈</span>
+      <h2>Кольори через CSS-класи</h2>
+      <p>Таблиця шириною 100%. Кольори комірок задані через CSS-класи <code>col1</code>, <code>col2</code>, <code>col3</code>: red, orange, yellow.</p>
+      <div class="card-tags">
+        <span class="tag">WIDTH 100%</span>
+        <span class="tag">CSS CLASS</span>
+        <span class="tag">COLOR</span>
+      </div>
+      <span class="card-link">Відкрити <span class="arrow">→</span></span>
+    </a>
+
+  </div>
+
+  <footer>Практична робота №2 · HTML-таблиці · Makarenko Tymur</footer>
+
+</body>
+</html>

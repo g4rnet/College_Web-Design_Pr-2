@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Завдання 7 — Меню ресторану</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #faf8f4;
+      color: #2a2018;
+      padding: 0 0 48px;
+    }
+
+    .cover {
+      background: #1c1410;
+      color: #e8d9b8;
+      text-align: center;
+      padding: 48px 24px 36px;
+      border-bottom: 3px solid #8b6914;
+    }
+    .cover .rest-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6em;
+      letter-spacing: 6px;
+      margin-bottom: 6px;
+    }
+    .cover .tagline {
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #8b6914;
+    }
+
+    .menu-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+
+    /* Заголовок секції */
+    .section-header td {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15em;
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      text-align: center;
+      color: #8b6914;
+      padding: 32px 0 10px;
+      border-bottom: 1px solid #c8a84b;
+    }
+
+    /* Роздільник між секціями */
+    .divider td {
+      padding: 20px 0 0;
+    }
+
+    /* Рядок страви */
+    .item-row td {
+      padding: 10px 6px;
+      vertical-align: top;
+      border-bottom: 1px solid #e8e0d0;
+    }
+    .item-row:hover td { background: #f3ede0; }
+
+    .col-bullet { width: 18px; color: #8b6914; font-size: 13px; padding-top: 11px; }
+    .col-name   { font-size: 14px; line-height: 1.55; color: #2a2018; }
+    .col-name .sub { font-size: 12px; color: #7a6a52; font-style: italic; display: block; margin-top: 2px; }
+    .col-weight { font-size: 12px; color: #9a8a72; font-style: italic; text-align: right; padding-right: 14px; white-space: nowrap; }
+    .col-price  { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 600; color: #1c1410; white-space: nowrap; text-align: right; }
+
+    footer {
+      text-align: center;
+      color: #9a8a72;
+      font-size: 12px;
+      margin-top: 36px;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cover">
+    <div class="rest-name">РЕСТОРАН</div>
+    <div class="tagline">Меню · 2025</div>
+  </div>
+
+  <div class="menu-wrap">
+    <table>
+
+      <!-- ── ГАРНІРИ ── -->
+      <tr class="section-header"><td colspan="4">Гарніри</td></tr>
+
+      <tr class="item-row">
+        <td class="col-bullet">•</td>
+        <td class="col-name">Картопля фрі ***</td>
+        <td class="col-weight">150/30</td>
+        <td class="col-price">39<small style="font-size:11px;font-weight:400">грн</small></td>
+      </tr>
+      <tr class="item-row">
+        <td class="col-bullet">•</td>
+        <td class="col-name">Картопляне пюре</td>
+        <td class="col-weight">150/30</td>
+        <td class="col-price">39<small style="font-size:11px;font-weight:400">грн</small></td>
+      </tr>
+      <tr class="item-row">
+        <td class="col-bullet">•</td>
+        <td class="col-name">Рис з печерицями та сиром</td>
+        <td class="col-weight">150/30</td>
+        <td class="col-price">49<small style="font-size:11px;font-weight:400">грн</small></td>
+      </tr>
+      <tr class="item-row">
+        <td class="col-bullet">•</td>
+        <td class="col-name">
+          Картопля по-селянськи
+          <span class="sub">запечена зі спеціями до золотої скоринки</span>
+        </td>
+        <td class="col-weight">200/30/50</td>
+        <td class="col-price">62<small style="font-size:11px;font-weight:400">грн</small></td>
+      </tr>
+      <tr class="item-row">
+        <td class="col-bullet">•</td>
+        <td class="col-name">Гречка з маслом</td>
+        <td class="col-weight">150/30</td>
+        <td class="col-price">39<small style="font-size:11px;font-weight:400">грн</small></td>
+      </tr>
+      <tr class="item-row">
+        <td class="col-bullet">•</td>
+        <td class="col-name">Спагетті з сиром</td>
+        <td class="col-weight">150/30</td>
+        <td class="col-price">59<small style="font-size:11px;font-weight:400">грн</small></td>
+      </tr>
+      <tr class="item-row">
+        <td class="col-bullet">•</td>
+        <td class="col-name">
+          Овочевий гарнір
+          <span class="sub">капуста цвітна, броколі, морква, корінь селери, цибуля порей, шпарагівка</span>
+        </td>
+        <td class="col-weight">200</td>
+        <td class="col-price">62<small style="font-size:11px;font-weight:400">грн</small></td>
+      </tr>
+
+      <!-- ── ДЕСЕРТИ ── -->
+      <tr class="divider"><td colspan="4"></td></tr>
+      <tr class="section-header"><td colspan="4">Десерти</td></tr>
+
+      <tr class="item-row">
+        <td class="col-bullet">•</td>
+        <td class="col-name">Млинці з яблуками та гарячим шоколадом</td>
+        <td class="col-weight">160/30</td>
+        <td class="col-price">75<small style="font-size:11px;font-weight:400">грн</small></td>
+      </tr>
+      <tr class="item-row">
+        <td class="col-bullet">•</td>
+        <td class="col-name">Млинці з сиром, родзинками та сметаною</td>
+        <td class="col-weight">160/50</td>
+        <td class="col-price">75<small style="font-size:11px;font-weight:400">грн</small></td>
+      </tr>
+      <tr class="item-row">
+        <td class="col-bullet">•</td>
+        <td class="col-name">Млинці з морозивом, шоколадом та горіхами</td>
+        <td class="col-weight">90/60/30</td>
+        <td class="col-price">70<small style="font-size:11px;font-weight:400">грн</small></td>
+      </tr>
+      <tr class="item-row">
+        <td class="col-bullet">•</td>
+        <td class="col-name">Морозиво з шоколадом, горіхами і коньяком</td>
+        <td class="col-weight">180</td>
+        <td class="col-price">77<small style="font-size:11px;font-weight:400">грн</small></td>
+      </tr>
+      <tr class="item-row">
+        <td class="col-bullet">•</td>
+        <td class="col-name">Морозиво з вишневим соусом, мигдалем і лікером</td>
+        <td class="col-weight">180</td>
+        <td class="col-price">77<small style="font-size:11px;font-weight:400">грн</small></td>
+      </tr>
+      <tr class="item-row">
+        <td class="col-bullet">•</td>
+        <td class="col-name">Яблучний штрудель з ванільним соусом</td>
+        <td class="col-weight">180</td>
+        <td class="col-price">96<small style="font-size:11px;font-weight:400">грн</small></td>
+      </tr>
+      <tr class="item-row">
+        <td class="col-bullet">•</td>
+        <td class="col-name">Сирники з сметаною</td>
+        <td class="col-weight">150/50</td>
+        <td class="col-price">70<small style="font-size:11px;font-weight:400">грн</small></td>
+      </tr>
+
+    </table>
+    <footer>Makarenko Tymur &nbsp;·&nbsp; Практична робота №2</footer>
+  </div>
+
+</body>
+</html>

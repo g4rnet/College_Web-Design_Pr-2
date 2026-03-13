@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <title>Завдання 4 — Накладна з оформленням</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans&display=swap');
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f0ede8;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #2c5f2e;
+      color: #fff;
+      padding: 18px 36px;
+      border-bottom: 4px solid #97bc62;
+    }
+    header h1 {
+      font-family: 'Merriweather', serif;
+      margin: 0;
+      font-size: 1.6em;
+      letter-spacing: 1px;
+    }
+
+    main {
+      max-width: 820px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 24px rgba(44,95,46,0.12);
+      padding: 36px 40px;
+    }
+
+    h2.doc-title {
+      font-family: 'Merriweather', serif;
+      text-align: center;
+      color: #2c5f2e;
+      font-size: 1.8em;
+      margin: 0 0 28px;
+      letter-spacing: 2px;
+      border-bottom: 2px solid #97bc62;
+      padding-bottom: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th {
+      background: #2c5f2e;
+      color: #fff;
+      padding: 11px 14px;
+      font-size: 14px;
+      text-align: left;
+      border: 1px solid #1e4220;
+    }
+    td {
+      padding: 10px 14px;
+      font-size: 14px;
+      border: 1px solid #c8ddb0;
+      color: #2a2a2a;
+    }
+    tr:nth-child(odd)  td { background: #f6fbf0; }
+    tr:nth-child(even) td { background: #fff; }
+    tr:hover td { background: #e8f5d6; transition: background 0.15s; }
+
+    tr.total td {
+      background: #2c5f2e !important;
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    footer {
+      background: #2c5f2e;
+      color: #c8ddb0;
+      text-align: center;
+      padding: 12px;
+      font-size: 13px;
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Table_3</h1>
+  </header>
+  <main>
+    <h2 class="doc-title">Накладна</h2>
+    <table>
+      <tr>
+        <th>Найменування</th>
+        <th>Ціна, грн</th>
+        <th>Кількість</th>
+        <th>Разом, грн</th>
+      </tr>
+      <tr>
+        <td>Процесор Intel Core i5</td>
+        <td>1 200</td>
+        <td>2</td>
+        <td>2 400</td>
+      </tr>
+      <tr>
+        <td>Процесор Intel Core i7</td>
+        <td>1 400</td>
+        <td>2</td>
+        <td>2 800</td>
+      </tr>
+      <tr class="total">
+        <td colspan="3">Разом за покупку</td>
+        <td>5 200</td>
+      </tr>
+    </table>
+  </main>
+  <footer>2025 &nbsp;|&nbsp; Makarenko Tymur</footer>
+</body>
+</html>
